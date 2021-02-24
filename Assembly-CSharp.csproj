@@ -36,18 +36,25 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Player\TempCheck.cs" />
      <Compile Include="Assets\Scripts\Player\GameManager.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\Player\Bobbing.cs" />
      <Compile Include="Assets\Scripts\UI\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
      <Compile Include="Assets\Scripts\UI\MainMenuScript.cs" />
+     <Compile Include="Assets\Scripts\Objects\CameraFlash.cs" />
+     <Compile Include="Assets\Scripts\Objects\FlashObject.cs" />
      <Compile Include="Assets\Scripts\Objects\Fan.cs" />
      <Compile Include="Assets\Scripts\Objects\Vacuum.cs" />
      <Compile Include="Assets\Scripts\Objects\Candle.cs" />
-     <Compile Include="Assets\Scripts\Objects\CameraFlash.cs" />
-     <Compile Include="Assets\Scripts\Player\TempCheck.cs" />
-     <Compile Include="Assets\Scripts\Objects\FlashObject.cs" />
+     <Compile Include="Assets\Scripts\UI\Backgroud.cs" />
+     <Compile Include="Assets\Scripts\Objects\Coin.cs" />
+     <Compile Include="Assets\Plat1.cs" />
+     <Compile Include="Assets\Scripts\UI\InGameUI.cs" />
+     <Compile Include="Assets\Plat2.cs" />
+     <Compile Include="Assets\Plat3.cs" />
+     <Compile Include="Assets\Scripts\UI\EndPage.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/Volumes/LaCie/Unity/Hub/Editor/2020.2.0f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

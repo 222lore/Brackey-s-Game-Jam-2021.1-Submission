@@ -1,6 +1,7 @@
  using System.Collections;
  using System.Collections.Generic;
  using UnityEngine;
+ using UnityEngine.UI;
  using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
@@ -8,7 +9,21 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
 
-    void Start() {}
+    private ArrayList uiTxt, uiImg;
+    public Image coinPic;
+    public Text coinTxt, tempTxt, scoreTxt;
+
+    void Start() 
+    {
+        uiTxt = new ArrayList()
+            {
+                coinTxt, tempTxt, scoreTxt
+            };
+        uiImg = new ArrayList()
+            {
+                coinPic
+            };
+    }
 
     void Update() 
     {
@@ -29,6 +44,7 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
+        alphaChange(1f);
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
@@ -37,6 +53,7 @@ public class PauseMenu : MonoBehaviour
     void Pause() 
     {
         pauseMenuUI.SetActive(true);
+        alphaChange(0.3f);
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
@@ -46,5 +63,22 @@ public class PauseMenu : MonoBehaviour
     {
         // This goes to the previous scene, should work when we build the game if it goes main menu to game (scene wise)
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        Resume();
+    }
+
+    private void alphaChange(float val) 
+    {
+        foreach (Text txt in uiTxt)
+        {
+            Color tempColor = txt.color;
+            tempColor.a = val;
+            txt.color = tempColor;
+        }
+        foreach (Image img in uiImg)
+        {
+            Color tempColor = img.color;
+            tempColor.a = val;
+            img.color = tempColor;
+        }
     }
 }

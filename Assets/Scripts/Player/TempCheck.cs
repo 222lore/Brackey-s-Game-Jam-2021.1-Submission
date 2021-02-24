@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TempCheck : MonoBehaviour
 {
-    public double t = 10;
+    public double t = 8;
     public Vector3 firstPos;
     public Vector3 secondPos;
     private Transform player;
@@ -20,49 +21,54 @@ public class TempCheck : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (t == 10)
+        if (t == 8)
         {
             firstPos = player.position;
-            Debug.Log(firstPos);
+            // Debug.Log(firstPos);
         }
         t -= Time.deltaTime;
-        if (t <= 10)
+        if (t <= 8)
         {
             secondPos = player.position;
-            Debug.Log("Second position" + secondPos);
+            // Debug.Log("Second position" + secondPos);
 
         }
-        Debug.Log("Time: " + t);
+        // Debug.Log("Time: " + t);
 
 
         dist = Vector3.Distance(firstPos,secondPos);
-        Debug.Log("Distance: " + dist);
+       // Debug.Log("Distance: " + dist);
 
-        if (t < 0 && dist < 15)
+        if (t < 0 && dist < 8)
         {
             tempAdjust();
         }
-        if (t < 0 && dist > 15)
+        if (t < 0 && dist > 8)
         {
             tempReset();
-            t = 10;
+            t = 8;
         }
 
 
     }
     private void tempAdjust()
     {
-        Debug.Log(dist);
-        if (dist > 15)
+        // Debug.Log(dist);
+        if (dist > 8)
         {
-            t = 10;
+            t = 8;
         }
         else
         {
             var gm = player.gameObject.GetComponent<GameManager>();
-            gm.tempCheck += Time.deltaTime; // one degree per second i think ??
-            Debug.Log("Temperature: " + gm.tempCheck);
-            if (gm.tempCheck > 30)
+            gm.tempCheck += 10*Time.deltaTime; 
+            /*
+            allows 10 seconds to move once temp warning has been triggered
+            not sure if too easy but adjust after play test
+            */
+            // Debug.Log("Temperature: " + gm.tempCheck);
+            PlayerPrefs.SetInt("Temp", (int)gm.tempCheck);
+            if (gm.tempCheck > 100)
             {
                 endGame();
             }
@@ -73,18 +79,20 @@ public class TempCheck : MonoBehaviour
     }
     private void tempReset()
     {
-        if (dist > 15)
+        if (dist > 8)
         {
             var gm = player.gameObject.GetComponent<GameManager>();
             gm.tempCheck = 20;
             Debug.Log("Temperature: " + gm.tempCheck);
+            PlayerPrefs.SetInt("Temp", (int)gm.tempCheck);
            
         }
     
     }
     private void endGame()
     {
-        Debug.Log("End the Game");
+        // Debug.Log("End the Game");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
 

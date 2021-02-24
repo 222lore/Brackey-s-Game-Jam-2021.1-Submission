@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     public float dampingFactor;
     public Vector2 bottomTopBounds;
+    public float xLeftBound;
+    public float xRightBound;
 
     private Rigidbody _rb;
     private Vector2 _move1Vec, _move2Vec;
@@ -31,6 +33,15 @@ public class PlayerController : MonoBehaviour
 
         if (transform.position.y < bottomTopBounds.x) {
             transform.position = new Vector3(transform.position.x, bottomTopBounds.x, transform.position.z);
+        }
+        if (transform.position.x < xLeftBound)
+        {
+            transform.position = new Vector3(xLeftBound, transform.position.y, transform.position.z);
+        }
+
+        if (transform.position.x > xRightBound)
+        {
+            transform.position = new Vector3(xRightBound, transform.position.y, transform.position.z);
         }
     }
 

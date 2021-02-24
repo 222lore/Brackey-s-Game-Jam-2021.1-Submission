@@ -11,5 +11,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Platformer.unity
     guid: 12b9bdca1c3418b4aa26d886660b1546
+  - enabled: 0
+    path: Assets/Scenes/EndScene.unity
+    guid: c3235c5cb2bd2473fbc85209f481ec6a
+  - enabled: 1
+    path: Assets/Scenes/EndGame.unity
+    guid: 231ed7bfe40f64049b211a2f63cf7a3c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a9f4e5c0e1acfcd4884fe6c5bae40a41, type: 2}

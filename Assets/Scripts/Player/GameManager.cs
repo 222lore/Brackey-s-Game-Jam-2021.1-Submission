@@ -41,6 +41,9 @@ public class GameManager : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+        //PlayerPrefs.SetInt("Temp", (int)tempCheck);
+        PlayerPrefs.SetInt("Coins", ghostEnergy);
+
         List<GameObject> toDestroy = new List<GameObject>();
         try {
             foreach (var baby in babies.Where(baby => baby.transform.position.y < _btBounds.x)) {
@@ -55,6 +58,9 @@ public class GameManager : MonoBehaviour {
             babies.Remove(b);
             Destroy(b);
         }
+        
+        if (ghostEnergy < 0) ghostEnergy = 0;
+        PlayerPrefs.SetInt("Energy Score", ghostEnergy);
     }
 
     public void OnSplit() {

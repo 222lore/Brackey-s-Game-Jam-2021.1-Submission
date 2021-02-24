@@ -19,7 +19,7 @@ public class CameraFlash : MonoBehaviour {
         _t += Time.deltaTime;
         if (_t > flashCooldown) {
             // flash!
-            Instantiate(flashPrefab, transform);
+            Instantiate(flashPrefab, transform.position, Quaternion.identity);
             _t = 0;
         }
     }
